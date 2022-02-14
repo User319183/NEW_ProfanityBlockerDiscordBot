@@ -13,10 +13,6 @@ import json
 
 import asyncio as asyncio
 
-import re
-import string
-
-
 from discord.ext import *
 from discord.ext.commands import *
 from ctypes import *

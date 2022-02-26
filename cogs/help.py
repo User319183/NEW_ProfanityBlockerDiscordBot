@@ -70,18 +70,13 @@ class Help_Commands(commands.Cog):
 
 
 
-# Generate a random UUID
 	@slash_command(name="helpme", description="A helpme command")
+	@commands.has_guild_permissions(administrator=True)
 	@commands.cooldown(1, 120, commands.BucketType.guild)
 	async def helpme(self, ctx, reason: Option(str, "Specify why you need help.")):
         
-        
-            if ctx.author.id in badList:
-                return await ctx.respond("You have been banned from doing this command!", ephemeral=True)
-            else:
-                pass
             
-                if len(reason) > 30:
+                if len(reason) > 50:
                     await ctx.respond("Reason must be lower than 30 characters! Try again in two minutes (120 seconds). ", ephemeral=True) 
                     
                 else:

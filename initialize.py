@@ -206,18 +206,6 @@ async def on_guild_remove(guild):
 
 
 
-@bot.command()
-async def stats(ctx):
-    all_members_embed_list = []
-
-    for x in bot.get_all_members():
-        all_members_embed_list.append(x)
-
-    print(f'{len(all_members_embed_list)}')
-    
-
-
-
 
 
 

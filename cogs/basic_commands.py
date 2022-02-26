@@ -31,10 +31,9 @@ import aiohttp
 from contextlib import redirect_stdout
 from discord.commands import slash_command
 
-import random
-import uuid
 
 import psutil
+
 
 
 
@@ -63,6 +62,7 @@ class Basic_Commands(commands.Cog):
 
 	@slash_command(name="info", description="Information about this bot")
 	async def info(self, ctx):
+
             
             self.bot_embed_guilds = []
 
@@ -71,6 +71,10 @@ class Basic_Commands(commands.Cog):
             embed = discord.Embed(title="Bot Info", description="General information about Profanity Blocker", color=0xD708CC)
             embed.add_field(name="__Bot developers:__", value="User319183#3149\n TheWizz1338#6367", inline=True)
             embed.add_field(name="__Server Count:__", value=f"{len(self.bot_embed_guilds)}", inline=True)
+            all_members_embed_list = []
+            for x in self.bot.get_all_members():
+                all_members_embed_list.append(x)
+            embed.add_field(name="__Users being watched for profanity:__", value=f"{len(all_members_embed_list)}")
             embed.add_field(name="__Websocket Ping:__", value=f"{round(self.bot.latency * 1000)}")
             embed.add_field(name="__CPU Usage:__", value = f'{psutil.cpu_percent()}%', inline = False)
             embed.add_field(name="__Memory Usage:__", value = f'{psutil.virtual_memory().percent}%', inline = False)
